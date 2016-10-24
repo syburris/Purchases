@@ -5,6 +5,33 @@
     <title>Home</title>
 </head>
 <body>
-so far so good
+<a href="/">All</a>
+<a href="/?category=Furniture">Furniture</a>
+<a href="/?category=Alcohol">Alcohol</a>
+<a href="/?category=Toiletries">Toiletries</a>
+<a href="/?category=Shoes">Shoes</a>
+<a href="/?category=Food">Food</a>
+<a href="/?category=Jewelry">Jewelry</a>
+<table>
+    <tr>
+        <th><strong>Name</strong></th>
+        <th><strong>Email</strong></th>
+        <th><strong>Category</strong></th>
+        <th><strong>Credit Card</strong></th>
+        <th><strong>CVV</strong></th>
+        <th><strong>Date</strong></th>
+    </tr>
+    {{#purchases}}
+    <tr>
+        <td>{{#customer}}{{name}}{{/customer}}</td>
+        <td>{{#customer}}{{email}}{{/customer}}</td>
+        <td>{{category}}</td>
+        <td>{{creditCard}}</td>
+        <td>{{cvv}}</td>
+        <td>{{date}}</td>
+    </tr>
+    {{/purchases}}
+</table>
+
 </body>
 </html>

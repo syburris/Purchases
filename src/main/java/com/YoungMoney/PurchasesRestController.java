@@ -2,11 +2,16 @@ package com.YoungMoney;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -61,8 +66,19 @@ public class PurchasesRestController {
                 e.printStackTrace();
             }
         }
-
     }
 
+    @RequestMapping(path = "/", method = RequestMethod.GET)
+    public String home(Model model, String category) {
+        List<Purchase> purchaseList;
+        if(category != null) {
+            purchaseList = purchases.findByCategory(category);
+        }
+        else {
+            purchaseList = (List<Purchase>) purchases.findAll();
+        }
+        model.addAttribute("purchases", purchaseList);
+        return "home";
+    }
 
 }
